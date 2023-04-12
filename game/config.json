@@ -1,0 +1,34 @@
+{
+  "races" : [
+    {"category" :  "human", "label" :  "human",       "icon" :  ""},
+
+    {"category" :  "fantasy", "label" :  "elf",       "icon" :  ""},
+    {"category" :  "fantasy", "label" :  "dwarf",     "icon" :  ""},
+    {"category" :  "fantasy", "label" :  "gnome",     "icon" :  ""},
+    {"category" :  "fantasy", "label" :  "halfling",  "icon" :  ""},
+
+    {"category" :  "canine", "label" :  "dog",        "icon" :  ""},
+    {"category" :  "canine", "label" :  "wolf",       "icon" :  ""},
+
+    {"category" :  "ursine", "label" :  "bear",       "icon" :  ""},
+    {"category" :  "ursine", "label" :  "panda",      "icon" :  ""},
+
+    {"category" :  "feline", "label" :  "cat",        "icon" :  ""},
+    {"category" :  "feline", "label" :  "lynx",       "icon" :  ""},
+    {"category" :  "feline", "label" :  "tiger",      "icon" :  ""},
+
+    {"category" :  "prycon", "label" :  "raccoon",    "icon" :  ""},
+    {"category" :  "prycon", "label" :  "cacomistle", "icon" :  ""},
+
+    {"category" :  "lapine", "label" :  "rabbit",     "icon" :  ""},
+    {"category" :  "lapine", "label" :  "hare",       "icon" :  ""}
+  ],
+  "skills" : [
+    {"category" : "domestic", "label" :  "cleaning"},
+    {"category" : "domestic", "label" :  "training"},
+
+    {"category" : "combat",   "label" :  "unarmed"},
+    {"category" : "combat",   "label" :  "melee"},
+    {"category" : "combat",   "label" :  "ranged"}
+  ]
+}
