@@ -3,11 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Trader</title>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"                   integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/dot-luv/jquery-ui.min.css"
+          integrity="sha512-JhmkwQ+HmKwPLrSYGCXmiC8t50+ig0ywEeweOMAqLCJe3XcAkGRAYQSe/Udpd07nJjHCx4QQ/vyCzwKJydsYyA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/dot-luv/theme.min.css"
+          integrity="sha512-DBOXJJIO/SsHuebZsr21dAAe8g4/7bJKQoPjeehY9MW1bZ1DAqoP9b/l+jCqYfTk+xqN0HksTk0HM0SL2qwbcw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             background-color: black;
             color: white;
+            font-family: monospace
+        }
+        * {
+            font-family: monospace
         }
         fieldset {
             border-radius: 1em;
@@ -16,9 +29,10 @@
             display:flex;
             justify-content: space-between;
         }
-        .flex {
+        .jobs {
             display: flex;
             justify-content: space-evenly;
+            flex-wrap: wrap;
         }
         ul.sortable {
             min-height: 2em;
@@ -27,136 +41,173 @@
             padding: 1em;
             min-width: 15em
         }
+        .appears-female {
+            color: pink
+        }
+        .appears-male {
+            color: skyblue
+        }
+        h3 {
+            border-bottom: thin white solid
+        }
+        fieldset>legend {
+            font-size: larger
+        }
     </style>
 </head>
 <body>
-    <fieldset>
-        <legend>Test Title</legend>
-        <div class="flex">
-            <div>
-                <h2>Guild Hall</h2>
-                <div>Evaulate</div>
-                <ul class="sortable">
-
-                </ul>
-                <div style="display:flex; justify-content: space-between">
-                    <span>Auction</span>
-                    <small style="float:right"><a href="#" style="color: greenyellow">refresh</a></small>
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-1">Management</a></li>
+            <li><a href="#tabs-2">Manor</a></li>
+            <li><a href="#tabs-3">Brothel</a></li>
+            <li><a href="#tabs-4">Clinic</a></li>
+            <li><a href="#tabs-5">Studio</a></li>
+        </ul>
+        <div id="tabs-1" style="display: flex">
+            <div class="jobs">
+                <div class="job" style="border-right: thin white dashed; padding-right: 2em">
+                    <h3>
+                        <span>Auction</span>
+                        <small style="float:right"><a href="#" style="color: greenyellow" onclick="spawn('#auction')">refresh</a></small>
+                    </h3>
+                    <div>
+                        <ul id="auction" class="sortable">
+                        </ul>
+                    </div>
                 </div>
-                <ul class="sortable">
-                </ul>
             </div>
-            <div>
-                <h2>Home</h2>
 
-                <div>Resting</div>
-                <ul class="sortable">
-                    <li>
-                        <span>Unnamed</span>
-                        <span>
-                            <i class="fa-solid fa-person" style="color: skyblue"></i>
-                            <i class="fa-solid fa-mars" style="color: skyblue"></i>
-                        </span>
-                    </li>
-                    <li>
-                        <span>Unnamed</span>
-                        <span>
-                            <i class="fa-solid fa-person-pregnant" style="color: pink"></i>
-                            <i class="fa-solid fa-person-dress" style="color: pink"></i>
-                            <i class="fa-solid fa-venus" style="color: pink"></i>
-                        </span>
-                    </li>
-                    <li>
-                        <span>Unnamed</span>
-                        <span>
-                            <i class="fa-solid fa-person-dress" style="color: pink"></i>
-                            <i class="fa-solid fa-venus" style="color: pink"></i>
-                        </span>
-                    </li>
-                    <li>
-                        <span>Unnamed</span>
-                        <span>
-                            <i class="fa-solid fa-child" style="color: skyblue"></i>
-                            <i class="fa-solid fa-mars" style="color: skyblue"></i>
-                        </span>
-                    </li>
-                    <li>
-                        <span>Unnamed</span>
-                        <span>
-                            <i class="fa-solid fa-child" style="color: pink"></i>
-                            <i class="fa-solid fa-venus" style="color: pink"></i>
-                        </span>
-                    </li>
-                </ul>
+            <div class="jobs">
 
-                <div>Cleaning</div>
-                <ul class="sortable">
-                </ul>
+                <div class="job">
+                    <h3><span>Manor</span>
+                        <small style="float:right">(0/5)</small>
+                    </h3>
+                    <div>
+                        <ul class="sortable">
+                            <li>
+                                <span style='min-width: 40%'>Whiskey</span>
+                                <span style='min-width: 20%'>Adult</span>
+                                <span>Raccoon</span>
+                                <span><i class='fa-solid fa-male appears-male'></i></span>
+                            </li>
+                            <li>
+                                <span style='min-width: 40%'>Brandy</span>
+                                <span style='min-width: 20%'>Adult</span>
+                                <span>Raccoon</span>
+                                <span><i class='fa-solid fa-female appears-female'></i></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-                <div>Training</div>
-                <ul class="sortable">
-                </ul>
+                <div class="job">
+                    <h3><span>Brothel</span>
+                        <small style="float:right">(0/5)</small>
+                    </h3>
+                    <div><ul class="sortable"></ul></div>
+                </div>
+
+                <div class="job">
+                    <h3><span>Clinic</span>
+                        <small style="float:right">(0/5)</small>
+                    </h3>
+                    <div><ul class="sortable"></ul></div>
+                </div>
+
+                <div class="job">
+                    <h3><span>Studio</span>
+                        <small style="float:right">(0/5)</small>
+                    </h3>
+                    <div><ul class="sortable"></ul></div>
+                </div>
+
             </div>
-            <div>
-                <h2>Brothel</h2>
+        </div>
+        <div id="tabs-2">
 
-                <div>Performers</div>
-                <ul class="sortable">
-                </ul>
-
-                <div>Dancers</div>
-                <ul class="sortable">
-                </ul>
-
-                <div>Cleaning</div>
-                <ul class="sortable">
-                </ul>
-
-                <div>Training</div>
-                <ul class="sortable">
-                </ul>
-            </div>
-            <div>
-                <h2>Clinic</h2>
-
-                <div>Doctors</div>
-                <ul class="sortable">
-                </ul>
-
-                <div>Patients</div>
-                <ul class="sortable">
-                </ul>
-
-                <div>Cleaning</div>
-                <ul class="sortable">
-                </ul>
-
-                <div>Training</div>
-                <ul class="sortable">
-                </ul>
+            <div class="jobs">
+                <div class="job">
+                    <h3>
+                        <span>Barracks</span>
+                        <small style="float:right"></small>
+                    </h3>
+                    <div>
+                        <ul class="sortable">
+                        </ul>
+                    </div>
+                </div>
             </div>
 
         </div>
-    </fieldset>
+        <div id="tabs-3"></div>
+        <div id="tabs-4"></div>
+        <div id="tabs-5"></div>
+        <div id="tabs-new"></div>
+    </div>
 
+
+
+    <div id="dialog" title="Basic dialog">
+        <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the &apos;x&apos; icon.</p>
+    </div>
     <script src="//code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="//code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
     <script>
-        class Slave {
-            age = 0;
-            gender = "male";
-            constructor() {
+        class Person {
+            name     = null;
+            race     = null;
+            gender   = null;
+            appears  = null;
+            age      = 0;
+            fatigue  = 0;
+            health   = 0;
+            pregnant = null;
 
+            place    = null;
+            job      = null;
+
+            constructor() {
+                this.gender = (Math.floor(Math.random() * 2) ? "mars" : "venus");
+                this.appears = (Math.floor(Math.random() * 2) ? "male" : "female");
+                this.age = ["child", "teen", "adult", "elder"][Math.floor(Math.random() * 4)];
+                this.name = names[appears][Math.floor(Math.random() * 200)];
+                this.race = races[Math.floor(Math.random() * races.length)];
             }
+
             render(tgt) {
                 // write this object as html into tgt
             }
         }
+
+        races = [
+            "human",
+            "dog", "fox", "wolf",
+            "cat", "lynx", "tiger", "cougar",
+            "raccoon",
+            "bear"
+        ];
+
         $(function() {
             $("ul.sortable").sortable({
                 connectWith: ".sortable"
             });
-
+            $("#tabs").tabs();
+            //$("#accordion").accordion({heightStyle: true});
+            $("#dialog").dialog({
+                height: "auto",
+                width: 400,
+                modal: true,
+                buttons: {
+                    "Delete all items": function() {
+                        $( this ).dialog( "close" );
+                    },
+                    Cancel: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            });
         });
         let names = {};
         $.ajax({
@@ -169,6 +220,38 @@
                 console.log(error);
             }
         });
+        function spawn(o) {
+            while ($(o).children("li").length > 9) {
+                $(o).children("li:first").remove();
+            };
+            let gender = (Math.floor(Math.random() * 2) ? "mars" : "venus");
+            let appears = (Math.floor(Math.random() * 2) ? "male" : "female");
+            let age = ["child", "teen", "adult", "elder"][Math.floor(Math.random() * 4)];
+            let name = names[appears][Math.floor(Math.random() * 200)];
+            let race = ["human", "fox", "dog", "cat"][Math.floor(Math.random() * 4)];
+            let li = $("<li>"
+                + "<span style='min-width: 40%'>" + name + "</span>"
+                + "<span style='min-width: 20%'>" + age + "</span>"
+                + "<span>" + race + "</span>"
+                + "<span>"
+                + "<i class='fa-solid fa-" + gender + " appears-" + appears + "'></i> "
+                + "</span>"
+                + "</li>"
+            );
+            $(o).append(li);
+
+        }
+
+        class Guildhouse {
+            name = "Guild";
+            tick = function() {};
+        }
+        class Brothel {}
+        class Manor   {}
+        class Clinic  {}
+        class Studio  {}
+        class Barn    {}
+
         </script>
 </body>
 </html>
