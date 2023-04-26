@@ -20,7 +20,7 @@
             display: flex;
             justify-content: space-evenly;
         }
-        ul {
+        ul.sortable {
             min-height: 2em;
             border: thin white solid;
             border-radius: 1em;
@@ -35,18 +35,22 @@
         <div class="flex">
             <div>
                 <h2>Guild Hall</h2>
-                <div>Auction House</div>
-                <ul>
+                <div>Evaulate</div>
+                <ul class="sortable">
 
                 </ul>
-                <div>Auction House</div>
-                <ul>
+                <div style="display:flex; justify-content: space-between">
+                    <span>Auction</span>
+                    <small style="float:right"><a href="#" style="color: greenyellow">refresh</a></small>
+                </div>
+                <ul class="sortable">
                 </ul>
             </div>
             <div>
                 <h2>Home</h2>
-                <div>Cleaning</div>
-                <ul>
+
+                <div>Resting</div>
+                <ul class="sortable">
                     <li>
                         <span>Unnamed</span>
                         <span>
@@ -84,27 +88,54 @@
                         </span>
                     </li>
                 </ul>
-                <div>Resting</div>
-                <ul>
+
+                <div>Cleaning</div>
+                <ul class="sortable">
                 </ul>
-            </div>
-            <div>
-                <h2>School</h2>
-                <div>Basic Education</div>
-                <ul>
+
+                <div>Training</div>
+                <ul class="sortable">
                 </ul>
             </div>
             <div>
                 <h2>Brothel</h2>
 
                 <div>Performers</div>
-                <ul>
+                <ul class="sortable">
                 </ul>
 
                 <div>Dancers</div>
-                <ul>
+                <ul class="sortable">
+                </ul>
+
+                <div>Cleaning</div>
+                <ul class="sortable">
+                </ul>
+
+                <div>Training</div>
+                <ul class="sortable">
                 </ul>
             </div>
+            <div>
+                <h2>Clinic</h2>
+
+                <div>Doctors</div>
+                <ul class="sortable">
+                </ul>
+
+                <div>Patients</div>
+                <ul class="sortable">
+                </ul>
+
+                <div>Cleaning</div>
+                <ul class="sortable">
+                </ul>
+
+                <div>Training</div>
+                <ul class="sortable">
+                </ul>
+            </div>
+
         </div>
     </fieldset>
 
@@ -114,14 +145,29 @@
         class Slave {
             age = 0;
             gender = "male";
-            constructor() { }
+            constructor() {
+
+            }
             render(tgt) {
                 // write this object as html into tgt
             }
         }
         $(function() {
+            $("ul.sortable").sortable({
+                connectWith: ".sortable"
+            });
 
         });
-    </script>
+        let names = {};
+        $.ajax({
+            url: "/game/names.json",
+            success: function(data, status, xhr) {
+                console.log(data);
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
+            }
+        });
+        </script>
 </body>
 </html>
