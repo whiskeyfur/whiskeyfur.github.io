@@ -30,9 +30,6 @@
             justify-content: space-between;
         }
         .jobs {
-            display: flex;
-            justify-content: space-evenly;
-            flex-wrap: wrap;
         }
         ul.sortable {
             min-height: 2em;
@@ -53,154 +50,187 @@
         fieldset>legend {
             font-size: larger
         }
+        .ui-menu-item {
+            padding-left: 2em
+        }
     </style>
 </head>
 <body>
+
     <div id="tabs">
         <ul>
-            <li><a href="#tabs-1">Management</a></li>
-            <li><a href="#tabs-2">Manor</a></li>
-            <li><a href="#tabs-3">Brothel</a></li>
-            <li><a href="#tabs-4">Clinic</a></li>
-            <li><a href="#tabs-5">Studio</a></li>
+            <li><a href="#tabs-guild">Guild</a></li>
+            <li id="tab-new"><a href="#tabs-new">&lt;new&gt;</a></li>
         </ul>
-        <div id="tabs-1" style="display: flex">
+        <div id="tabs-guild" style="display: flex">
             <div class="jobs">
-                <div class="job" style="border-right: thin white dashed; padding-right: 2em">
+                <div class="job">
                     <h3>
                         <span>Auction</span>
-                        <small style="float:right"><a href="#" style="color: greenyellow" onclick="spawn('#auction')">refresh</a></small>
+                        <small style="float:right"></small>
                     </h3>
                     <div>
                         <ul id="auction" class="sortable">
                         </ul>
                     </div>
                 </div>
-            </div>
-
-            <div class="jobs">
 
                 <div class="job">
-                    <h3><span>Manor</span>
-                        <small style="float:right">(0/5)</small>
+                    <h3>
+                        <span>Homeless</span>
+                        <small style="float:right"></small>
                     </h3>
                     <div>
-                        <ul class="sortable">
+                        <ul id="homeless" class="sortable">
                             <li>
                                 <span style='min-width: 40%'>Whiskey</span>
                                 <span style='min-width: 20%'>Adult</span>
                                 <span>Raccoon</span>
-                                <span><i class='fa-solid fa-male appears-male'></i></span>
+                                <span>
+                                    <i class='fa-solid fa-mars appears-male'></i>
+                                </span>
                             </li>
                             <li>
                                 <span style='min-width: 40%'>Brandy</span>
                                 <span style='min-width: 20%'>Adult</span>
                                 <span>Raccoon</span>
-                                <span><i class='fa-solid fa-female appears-female'></i></span>
+                                <span>
+                                    <i class='fa-solid fa-venus appears-female'></i>
+                                </span>
+                            </li>
+                            <li>
+                                <span style='min-width: 40%'>Gabby</span>
+                                <span style='min-width: 20%'>Adult</span>
+                                <span>Raccoon</span>
+                                <span>
+                                    <i class='fa-solid fa-venus appears-male'></i>
+                                </span>
                             </li>
                         </ul>
                     </div>
                 </div>
-
-                <div class="job">
-                    <h3><span>Brothel</span>
-                        <small style="float:right">(0/5)</small>
-                    </h3>
-                    <div><ul class="sortable"></ul></div>
-                </div>
-
-                <div class="job">
-                    <h3><span>Clinic</span>
-                        <small style="float:right">(0/5)</small>
-                    </h3>
-                    <div><ul class="sortable"></ul></div>
-                </div>
-
-                <div class="job">
-                    <h3><span>Studio</span>
-                        <small style="float:right">(0/5)</small>
-                    </h3>
-                    <div><ul class="sortable"></ul></div>
-                </div>
-
             </div>
-        </div>
-        <div id="tabs-2">
 
             <div class="jobs">
-                <div class="job">
-                    <h3>
-                        <span>Barracks</span>
-                        <small style="float:right"></small>
-                    </h3>
-                    <div>
-                        <ul class="sortable">
-                        </ul>
-                    </div>
-                </div>
-            </div>
 
+            </div>
         </div>
-        <div id="tabs-3"></div>
-        <div id="tabs-4"></div>
-        <div id="tabs-5"></div>
         <div id="tabs-new"></div>
     </div>
 
+    <div id="dlgPlace" title="New Place">
+        <div>
+            <label for="placeType">Type</label>
+            <select id="placeType" name="placeType">
+                <optgroup label="Private Residence">
+                    <option>House</option>
+                    <option>Manor</option>
+                    <option>Castle</option>
+                </optgroup>
 
-
-    <div id="dialog" title="Basic dialog">
-        <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the &apos;x&apos; icon.</p>
+                <optgroup label="Business">
+                    <option>Brothel</option>
+                    <option>Clinic</option>
+                    <option>Farm</option>
+                    <option>Studio</option>
+                </optgroup>
+            </select>
+        </div>
+        <div>
+            <label for="placeName">Name</label>
+            <input type="text" name="placeName" id="placeName">
+        </div>
     </div>
+    <div id="dlgRoom" title="New Place">
+        <label for="roomType">Room Type</label>
+        <select id="roomType" name="roomType">
+            <optgroup label="Bedrooms">
+                <option>Bedroom</option>
+                <option>Barracks</option>
+                <option>Common Room</option>
+            </optgroup>
+
+            <optgroup label="Work">
+                <option>Cleaning</option>
+                <option>Training</option>
+                <option>Reception</option>
+            </optgroup>
+        </select>
+    </div>
+
+    <div id="dlgPerson" title="Profile">
+        <div>
+            <label for="personName">Name</label>
+            <input id="personName" name="personName" type="text">
+        </div>
+        <div>
+            <label for="personRace">Race</label>
+            <select id="personRace" name="personRace" class="selectmenu">
+                <optgroup label="Human">
+                    <option value="human">Human</option>
+                </optgroup>
+                <optgroup label="Feline">
+                    <option value="cat">Cat</option>
+                    <option value="cougar">Cougar</option>
+                    <option value="lynx">Lynx</option>
+                    <option value="tiger">Tiger</option>
+                </optgroup>
+                <optgroup label="Canine">
+                    <option value="dog">Dog</option>
+                    <option value="wolf">Wolf</option>
+                </optgroup>
+                <optgroup label="Raccoon">
+                    <option value="raccoon">Raccoon</option>
+                    <option value="cacomistle">Cacomistle</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <div>
+            <label for="personGender">Gender</label>
+            <select id="personGender" name="personGender" class="selectmenu">
+                <option value="male"    ><i class="fa-solid  fa-mars   appears-male  "></i> Male</option>
+                <option value="female"  ><i class="fa-solid  fa-venus  appears-male  "></i> Female</option>
+                <!--
+                <option value="cuntboy" ><i class="fa-solid  fa-mars   appears-female"></i> Cuntboy</option>
+                <option value="dickgirl"><i class="fa-solid  fa-venus  appears-female"></i> Dickgirl</option>
+                -->
+            </select>
+        </div>
+
+
+        <div>
+            <label for="personSire">Sire</label>
+            <select id="personSire" name="personSire" class="selectmenu">
+                <option></option>
+            </select>
+        </div>
+
+
+        <div>
+            <label for="personDame">Dame</label>
+            <select id="personDame" name="personDame" class="selectmenu">
+                <option></option>
+            </select>
+        </div>
+    </div>
+
     <script src="//code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="//code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <script src="/game/index.js" type="text/javascript" lang="JavaScript"></script>
     <script>
-        class Person {
-            name     = null;
-            race     = null;
-            gender   = null;
-            appears  = null;
-            age      = 0;
-            fatigue  = 0;
-            health   = 0;
-            pregnant = null;
-
-            place    = null;
-            job      = null;
-
-            constructor() {
-                this.gender = (Math.floor(Math.random() * 2) ? "mars" : "venus");
-                this.appears = (Math.floor(Math.random() * 2) ? "male" : "female");
-                this.age = ["child", "teen", "adult", "elder"][Math.floor(Math.random() * 4)];
-                this.name = names[appears][Math.floor(Math.random() * 200)];
-                this.race = races[Math.floor(Math.random() * races.length)];
-            }
-
-            render(tgt) {
-                // write this object as html into tgt
-            }
-        }
-
-        races = [
-            "human",
-            "dog", "fox", "wolf",
-            "cat", "lynx", "tiger", "cougar",
-            "raccoon",
-            "bear"
-        ];
-
         $(function() {
             $("ul.sortable").sortable({
                 connectWith: ".sortable"
             });
             $("#tabs").tabs();
-            //$("#accordion").accordion({heightStyle: true});
-            $("#dialog").dialog({
+            $("#dlgPlace").dialog({
+                autoOpen: false,
                 height: "auto",
                 width: 400,
                 modal: true,
                 buttons: {
-                    "Delete all items": function() {
+                    "Purchase": function() {
                         $( this ).dialog( "close" );
                     },
                     Cancel: function() {
@@ -208,49 +238,46 @@
                     }
                 }
             });
-        });
-        let names = {};
-        $.ajax({
-            url: "/game/names.json",
-            success: function(data, status, xhr) {
-                console.log(data);
-                names = data;
-            },
-            error: function (xhr, status, error) {
-                console.log(error);
-            }
-        });
-        function spawn(o) {
-            while ($(o).children("li").length > 9) {
-                $(o).children("li:first").remove();
-            };
-            let gender = (Math.floor(Math.random() * 2) ? "mars" : "venus");
-            let appears = (Math.floor(Math.random() * 2) ? "male" : "female");
-            let age = ["child", "teen", "adult", "elder"][Math.floor(Math.random() * 4)];
-            let name = names[appears][Math.floor(Math.random() * 200)];
-            let race = ["human", "fox", "dog", "cat"][Math.floor(Math.random() * 4)];
-            let li = $("<li>"
-                + "<span style='min-width: 40%'>" + name + "</span>"
-                + "<span style='min-width: 20%'>" + age + "</span>"
-                + "<span>" + race + "</span>"
-                + "<span>"
-                + "<i class='fa-solid fa-" + gender + " appears-" + appears + "'></i> "
-                + "</span>"
-                + "</li>"
-            );
-            $(o).append(li);
+            $("#tab-new").on("click", function() {
+                $("#dlgPlace").dialog("open");
+            });
+            $("#dlgRoom").dialog({
+                autoOpen: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+                buttons: {
+                    "Purchase": function() {
+                        $( this ).dialog( "close" );
+                    },
+                    Cancel: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            });
+            $("#dlgPerson").dialog({
+                autoOpen: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+                buttons: {
+                    "Purchase": function() {
+                        $( this ).dialog( "close" );
+                    },
+                    "Sell": function() {
+                        $( this ).dialog( "close" );
+                    },
+                    Cancel: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            });
+            $("#tabs>ul").sortable();
+            $(".selectmenu").selectmenu();
+            let timer = setInterval(function() {
 
-        }
-
-        class Guildhouse {
-            name = "Guild";
-            tick = function() {};
-        }
-        class Brothel {}
-        class Manor   {}
-        class Clinic  {}
-        class Studio  {}
-        class Barn    {}
+            });
+        });
 
         </script>
 </body>
