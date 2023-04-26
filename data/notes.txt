@@ -1,5 +1,0 @@
-id      int      primary key auto_increment
-label   varchar
-parent  int      references this(id)
-type    varchar
-data    json
