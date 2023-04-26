@@ -1,0 +1,17 @@
+{
+  "name": "whiskeyfur/whiskeyfur.github.io",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "John Walker II",
+      "email": "john.walker.ii@gmail.com"
+    }
+  ],
+  "require": {
+    "leafs/router" : "*",
+    "ext-fileinfo": "*",
+    "ext-pdo": "*"
+  }
+}
