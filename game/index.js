@@ -20,8 +20,8 @@ class Person {
     }
 
     render(o) {
-        let gender = (Math.floor(Math.random() * 2) ? "mars" : "venus");
-        let appears = (Math.floor(Math.random() * 2) ? "male" : "female");
+        let gender = ["male", "andromorph", "female", "gynommorph"][Math.floor(Math.random() * 4)];
+        let appears = (gender === "male" || gender === "andromorph" ? "male" : "female");
         let age = ["child", "teen", "adult", "elder"][Math.floor(Math.random() * 4)];
         let name = names[appears][Math.floor(Math.random() * 200)];
         let race = ["human", "fox", "dog", "cat"][Math.floor(Math.random() * 4)];
@@ -68,7 +68,7 @@ class Game {
     constructor() {
         $.ajax({
             url: "/game/races.json",
-            success: function(data, status, xhr) {
+            success: function(data) {
                 Game.races = data;
             },
             error: function (xhr, status, error) {
@@ -77,7 +77,7 @@ class Game {
         });
         $.ajax({
             url: "/game/names.json",
-            success: function(data, status, xhr) {
+            success: function(data) {
                 Game.names = data;
             },
             error: function (xhr, status, error) {
