@@ -53,15 +53,26 @@
         label {
             display:block;
         }
+        .google-visualization-table {
+
+        }
+        .tableFormat {
+            background-color: black;
+            color: white
+        }
+        .tableFormatTh {
+            background-color: black;
+            color: white
+        }
     </style>
 </head>
 <body>
 
-    <div id="tabs">
+    <div class="tabs">
         <ul>
             <li><a href="#tabs-journal">Journal</a></li>
+            <li><a href="#tabs-finances">Finances</a></li>
             <li><a href="#tabs-guild">Guild</a></li>
-            <li id="tab-new"><a href="#tabs-new">&lt;new&gt;</a></li>
         </ul>
         <div id="tabs-journal">
             <div>All the things you SHOULD do...</div>
@@ -70,6 +81,9 @@
             <div><label><input type="checkbox"> Buy a few slaves to do the work </label></div>
             <div><label><input type="checkbox"> .... </label></div>
             <div><label><input type="checkbox"> profit </label></div>
+        </div>
+        <div id="tabs-finances">
+            <div id="financesTable"></div>
         </div>
         <div id="tabs-guild" style="display: flex">
             <div class="jobs">
@@ -91,120 +105,11 @@
                     </h3>
                     <div>
                         <ul id="homeless" class="sortable">
-                            <li class="slave">
-                                <span style='min-width: 40%'>Whiskey</span>
-                                <span style='min-width: 20%'>Adult</span>
-                                <span>Raccoon</span>
-                                <span>
-                                    <i class='fa-solid fa-mars appears-male'></i>
-                                </span>
-                            </li>
-                            <li class="slave">
-                                <span style='min-width: 40%'>Brandy</span>
-                                <span style='min-width: 20%'>Adult</span>
-                                <span>Raccoon</span>
-                                <span>
-                                    <i class='fa-solid fa-venus appears-female'></i>
-                                </span>
-                            </li>
-                            <li class="slave">
-                                <span style='min-width: 40%'>Gabby</span>
-                                <span style='min-width: 20%'>Adult</span>
-                                <span>Raccoon</span>
-                                <span>
-                                    <i class='fa-solid fa-venus appears-male'></i>
-                                </span>
-                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="jobs">
-            </div>
-        </div>
-        <div id="tabs-new">
-
-        </div>
-    </div>
-
-    <div id="dlgPerson" title="Profile">
-        <div>
-            <div class="tabs">
-                <ul>
-                    <li><a href="#tabs-stats">Stats</a></li>
-                    <li><a href="#tabs-options">Options</a></li>
-                </ul>
-                <div id="tabs-stats">
-                    <div>
-                        <label for="personName">Name</label>
-                        <input id="personName" name="personName" type="text" value="Gabby" style="text-indent: 1em">
-                    </div>
-                    <div>
-                        <label>Race</label>
-                        <div style="text-indent: 2em">Raccoon</div>
-                    </div>
-
-                    <div>
-                        <label>Gender</label>
-                        <div style="text-indent: 2em">Andromorph</div>
-                    </div>
-
-
-                    <div>
-                        <label>Sire</label>
-                        <div style="padding-left: 2em" class="slave">
-                            <span style='min-width: 40%'>Whiskey</span>
-                            <span style='min-width: 20%'>Adult</span>
-                            <span>Raccoon</span>
-                            <span>
-                            <i class='fa-solid fa-mars appears-male'></i>
-                        </span>
-                        </div>
-                    </div>
-
-
-                    <div>
-                        <label>Dame</label>
-                        <div style="padding-left: 2em" class="slave">
-                            <span style='min-width: 40%'>Brandy</span>
-                            <span style='min-width: 20%'>Adult</span>
-                            <span>Raccoon</span>
-                            <span>
-                            <i class='fa-solid fa-venus appears-female'></i>
-                        </span>
-                        </div>
-                    </div>
-                    <div>
-                        <label>Traits</label>
-                        <div style="padding-left: 2em">
-                            Incest
-                        </div>
-                    </div>
-                </div>
-                <div id="tabs-options">
-                    <div>
-                        <label for="personJob">Job</label>
-                        <select id="personJob" name="personJob" class="selectmenu">
-                            <optgroup label="Guild">
-                                <option>Auction</option>
-                                <option selected>Homeless</option>
-                            </optgroup>
-                        </select>
-                    </div>
-
-                    <fieldset>
-                        <legend>Sex Acts</legend>
-                        <label><input type="checkbox"> Vaginal</label>
-                        <label><input type="checkbox"> Anal</label>
-                        <label><input type="checkbox"> Oral</label>
-                        <label><input type="checkbox"> Breasts</label>
-                    </fieldset>
-                </div>
-
-            </div>
-            <div>
-
-
             </div>
         </div>
     </div>
@@ -214,65 +119,39 @@
     <script src="/game/index.js" type="text/javascript" lang="JavaScript"></script>
     <script>
         $(function() {
-            $("ul.sortable").sortable({
-                connectWith: ".sortable"
+            $(".tabs").tabs({
+                width: "auto"
             });
-            $("#tabs, .tabs").tabs();
-            $("#dlgPlace").dialog({
-                autoOpen: false,
-                height: "auto",
-                modal: true,
-                buttons: {
-                    "Purchase": function() {
-                        $( this ).dialog( "close" );
-                    },
-                    Cancel: function() {
-                        $( this ).dialog( "close" );
-                    }
-                }
-            });
-            $("#tab-new").on("click", function() {
-                $("#dlgPlace").dialog("open");
-            });
-            $("#dlgRoom").dialog({
-                autoOpen: false,
-                height: "auto",
-                modal: true,
-                buttons: {
-                    "Purchase": function() {
-                        $( this ).dialog( "close" );
-                    },
-                    Cancel: function() {
-                        $( this ).dialog( "close" );
-                    }
-                }
-            });
-            $("#dlgPerson").dialog({
-                autoOpen: false,
-                height: "auto",
-                width: "auto",
-                modal: true,
-                buttons: {
-                    "Save": function() {
-                        $( this ).dialog( "close" );
-                    },
-                    Cancel: function() {
-                        $( this ).dialog( "close" );
-                    }
-                }
-            });
-            $("#tabs>ul").sortable();
+
             $(".selectmenu").selectmenu({
                 width: "auto"
             });
 
-            $(document).on("click", ".slave", function() {
-                var el = $(this);
-                console.log(el);
-                $("#dlgPerson").dialog("open");
-            });
-        });
+            game = {
+                "slaves": {
+                    "<id>" : {
+                        "name": "",
+                        "race": "",
+                        "gender": "",
+                        "age": 0,
+                        "place": "<id>",
+                        "job": "<id>"
+                    }
+                },
+                "places": {
+                    "<id>" : {
+                        "name": ""
+                    }
+                },
+                "jobs": {
+                    "<id>" : {
+                        "name": "",
+                        "place": "<id>"
+                    }
+                }
+            }
 
+        });
         </script>
 </body>
 </html>
