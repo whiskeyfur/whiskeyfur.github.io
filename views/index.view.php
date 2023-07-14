@@ -15,7 +15,7 @@
                 background-color: lightblue;
                 padding: 2em;
                 margin-top: 2em;
-                box-shadow: 2px 2px 10px gray, inset 0px 0px 12px gray;
+                box-shadow: 2px 2px 10px gray, inset 0 0 12px gray;
             }
             .display-4 {
                 border-bottom: thin black solid;

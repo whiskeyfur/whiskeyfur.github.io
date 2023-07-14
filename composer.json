@@ -12,6 +12,8 @@
   "require": {
     "leafs/router" : "*",
     "ext-fileinfo": "*",
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "leafs/bareui": "*",
+    "leafs/mvc": "*"
   }
 }

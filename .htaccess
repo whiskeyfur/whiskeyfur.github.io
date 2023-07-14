@@ -1,6 +1,7 @@
+SetEnv ENVIRONMENT dev
+
 # proxy module is NOT installed
 RewriteEngine on
 
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule (.*) router.php
