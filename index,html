@@ -6,5 +6,8 @@
 <body>
 <h1>Coming Soon</h1>
 Exploring having multiple repos push to this site.
+<h2>Bitburner?</h2>
+I am a contributor to the bitburner web game, and my <a href="/butburner-src/">own dev copy</a> of it is open for the public to enjoy. 
+<small>Please note this doesn't save your games across the official and my version, since it's stored on a per origin basis. Not per game.</small>
 </body>
 </html>
