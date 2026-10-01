@@ -174,9 +174,11 @@
       const others = nav.ships.filter((s) => s.name !== own?.name);
       if (mode === 'helm') {
         // Engine power caps the speed (Engineering).
-        const top = nav.maxWarp ?? 9;
+        // Impulse comes from the impulse drives, warp from the warp core and engines.
+        const lim = nav.speed || { warp: nav.maxWarp ?? 9, impulse: 0.25 };
         for (const o of speedSel.options) {
-          const over = Number(o.value) > top;
+          const v = Number(o.value);
+          const over = v > 0 && (v < 1 ? lim.impulse <= 0 : v > lim.warp);
           o.disabled = over;
           o.textContent = SPEEDS.find(([v]) => v === o.value)[1] + (over ? ' (no power)' : '');
         }
@@ -231,7 +233,7 @@
               ['Distance', `${d.distance} units${d.inTransporterRange ? ' (transporter range)' : d.inCommsRange ? ' (comms range)' : ''}`],
               ['Position', `${Math.round(d.x)}, ${Math.round(d.y)}`],
               ['Heading · speed', `${String(Math.round(d.heading)).padStart(3, '0')} · ${speedName(d.warp)}`],
-              ['Shields', `${d.shields ? 'Up' : 'Down'}${d.shieldStrength != null ? ` · ${d.shieldStrength}% strength` : ''}`],
+              ['Shields', d.shields ? `Up${d.shieldStrength != null ? ` · ${d.shieldStrength}%` : ''}` : 'Down'], // strength only means something while they're up
               ...(d.hull != null ? [['Hull', `${d.hull}%${d.disabled ? ' · disabled' : ''}${d.damaged.length ? ` · damaged: ${d.damaged.join(', ')}` : ''}`]] : []),
               ...(d.signature != null ? [['Power signature', `${d.signature}%${d.signature < 60 ? ' (running quiet)' : ''}`]] : []),
               ['Ops', d.ops ? 'On duty' : 'None on duty'],
